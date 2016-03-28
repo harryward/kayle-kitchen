@@ -1,0 +1,159 @@
+<template name="itemLanding">
+    {{#if recipe}}
+        {{#each recipe}}
+
+            <h2 class="ui center aligned icon header">
+                <i class="circular food icon"></i>
+                {{title}}
+            </h2>
+            <div class="ui  segment">
+                <div class="ui left pull-left">COGS: {{#if cost}} {{cost}} {{else}} <code style="margin-left:10px;font-size:14px;color:red">COST NEEDED</code>{{/if}}
+                    <a href="#" class="ui deleteRecipe right red pull-right floated button">Delete Recipe</a>
+                    <a href="/add/recipe?id={{_id}}" class="ui right pull-right floated button">Edit Recipe</a>
+                </div>
+
+            </div>
+            {{#if percenter}}
+                <div class="ui horizontal segments">
+                    <div class="ui segment">
+                        <div class="ui   inverted segment">
+                            <h2 class="ui  header">
+                                {{percenter}}
+                                <div class="sub inverted header">leftover</div>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="ui segment">
+                        <div class="ui inverted segment">
+                            <h2 class="ui  header">
+                                {{insights.remaining}}/{{insights.made}}
+                                <div class="sub inverted header">remaining vs. made</div>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="ui segment">
+                        <div class="ui inverted segment">
+                            <h2 class="ui  header">
+                                {{dollar insights.price}}
+                                <div class="sub inverted header">avg. price</div>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+
+            <div class="ui aligned segment">
+                <p class="ui  header">Featured Image</p>
+
+                {{#if image}}
+                    <div class="ui center aligned"><img class="ui medium center rounded image" src="{{image}}"></div>
+                {{else}}
+                    <div class="ui center aligned"><img class="ui medium center rounded image" src="http://placehold.it/600x600&t=needs+photo"></div>
+                {{/if}}
+            </div>
+
+            <div class="ui tall  stacked segment">
+                <p class="ui header">Description</p>
+                {{#if description}}
+                    <p class="aligned center ui">{{description}}</p>
+                {{else}}
+                    <code style="font-size:14px;color:red">NO DESCRIPTION..</code>
+                {{/if}}
+
+            </div>
+
+
+
+            <div class="ui tall  stacked segment">
+                <p class="ui header">Ingredients</p>
+                <p class="aligned center ui">{{ingredients}}</p>
+            </div>
+
+            <!--<div class="ui tall  stacked segment">-->
+                <!--<p class="ui header">Buzzwords</p>-->
+
+                <!--{{#if buzzwords}}-->
+                    <!--{{buzzwords}}-->
+                <!--{{else}}-->
+                    <!--<code style="font-size:14px;color:red">NO BUZZWORDS..</code>-->
+                <!--{{/if}}-->
+            <!--</div>-->
+
+            <div class="ui tall  stacked segment">
+                <p class="ui header">Nutritional Info</p>
+                <div class="ui relaxed divided list">
+                    <div class="item">
+                        <i class="large info middle aligned icon"></i>
+                        <div class="content">
+                            <a class="header">Calories</a>
+                            <div class="description">{{calories}}</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <i class="large info middle aligned icon"></i>
+                        <div class="content">
+                            <a class="header">Protein</a>
+                            <div class="description">{{protein}}</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <i class="large info middle aligned icon"></i>
+                        <div class="content">
+                            <a class="header">Carbs</a>
+                            <div class="description">{{carbs}}</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <i class="large info middle aligned icon"></i>
+                        <div class="content">
+                            <a class="header">Fat</a>
+                            <div class="description">{{fat}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        {{/each}}
+
+        <div class="ui tall  stacked segment">
+            <p class="ui header">Runs</p>
+            {{#each menuItems}}
+                {{#if aboveZero}}
+                    <div class="ui clearing segment">
+
+                        <p class="pull-right">
+                        <div class="ui labeled button" tabindex="0">
+                            <div class="ui button">
+                                <i class="calendar icon"></i>
+                            </div>
+                            <a class="ui basic label">
+                                {{date}}
+                            </a>
+                        </div>
+                        </p>
+                        <p>{{title}}</p>
+                        <div class="ui floated button right">{{price}}</div>
+                        <div class="ui floated button right">{{quantity}}/{{originalQty}}</div>
+                        <div class="ui labeled button" tabindex="0">
+                            <div class="ui basic blue button">
+                                <i class="fork icon"></i> Leftover
+                            </div>
+                            <a class="ui basic left pointing blue label">
+                                {{sellRate}}
+                            </a>
+                        </div>
+
+
+                    </div>
+                {{/if}}
+            {{/each}}
+        </div>
+    {{else}}
+        <div style="padding:100px;margin-top:100px;" class="ui loading segment">
+            <p></p>
+            <p></p>
+        </div>
+    {{/if}}
+
+</template>

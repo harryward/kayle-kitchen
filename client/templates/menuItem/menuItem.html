@@ -1,0 +1,45 @@
+<template name="menuItem">
+    {{#each menuItem}}
+        <div class="ui breadcrumb">
+            <a class="section" href="/">Kitchen</a>
+            <div class="divider"> / </div>
+            <div class="section">Menu</div>
+            <div class="divider"> / </div>
+            <div class="section">{{title}}</div>
+            <div class="divider"> / </div>
+            <div class="active section">Edit</div>
+        </div>
+    <div class="segment ui">
+    <form class="ui menuItem form">
+
+        <div class="field">
+            <label>Title</label>
+            <input type="text" name="title" placeholder="Title" value="{{title}}">
+        </div>
+
+        <div class="two fields">
+            <div class="field">
+                <label>Remaining</label>
+                <input type="text" name="quantity" value="{{quantity}}">
+            </div>
+            <div class="field">
+                <label>Total Made</label>
+                <input type="text" name="originalQty" value="{{originalQty}}">
+            </div>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label>Price</label>
+                <input type="text" name="price" value="{{price}}">
+            </div>
+        </div>
+        <button class="button ui green icon save">
+            <i class="save icon"></i>
+            Save
+        </button>
+
+    </form>
+        <div class="message small ui inverted">If you want to edit the ingredients, picture, etc <a href="/item/{{recipe}}">Edit The Recipe</a></div>
+    </div>
+    {{/each}}
+</template>

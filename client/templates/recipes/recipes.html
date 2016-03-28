@@ -1,0 +1,34 @@
+<template name="recipes">
+    <div class="ui breadcrumb">
+        <a class="section" href="/">Kitchen</a>
+        <div class="divider"> / </div>
+        <div class="active section">Recipes </div>
+    </div>
+
+    <h1>Recipes <a href="/add/recipe" style="float:right" class="pull-right right ui button green tiny">Add New</a></h1>
+
+    <div class="ui searchForm form">
+        <div class="field">
+            <input placeholder="search..." value="{{recQuery}}" type="text" class="search ui"/>
+        </div>
+    </div>
+
+        <div class="ui three link cards">
+            {{#each rec}}
+                <div class="card">
+                    <a href="/item/{{_id}}" class="image">
+                        <img src="{{photo}}">
+                    </a>
+                    <div class="content">
+                        <div class="header">
+                            <a href="/item/{{_id}}">{{title}}</a>
+                        </div>
+                        <div class="meta">
+                            <a>{{type}}</a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+
+</template>

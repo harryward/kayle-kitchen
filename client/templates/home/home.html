@@ -1,0 +1,52 @@
+<template name="home">
+    <div class="ui breadcrumb">
+        <a class="section" href="/">Kitchen</a>
+        <div class="divider"> / </div>
+        <div class="active section">Menu</div>
+    </div>
+    <h1>Menu Lineup</h1>
+    <div class="ui message">
+
+        <a href="/addItem" class="button ui green huge icon">
+            <i class="plus icon ui"></i>
+            Add Menu Item
+        </a>
+
+    </div>
+    <div class="ui segments">
+        {{#if menuItems}}
+
+            {{#each menuItems}}
+                <div class="ui {{color}} {{dow}} segment">
+                    <h3>{{title}} <small>{{daypart}}</small> </h3>
+                    <p><small>{{ingredients}}</small></p>
+                    <p>
+                    <div class="ui label">
+                        <i class="calendar icon"></i> {{date}}
+                    </div>
+                    <div class="ui label">
+                        <i class="in cart icon"></i> {{quantity}} of {{originalQty}} remaining ({{percent}} leftover)
+                    </div>
+                    <div class="ui label">
+                        <i class="dollar icon"></i> {{dollar price}}
+                    </div>
+
+                    <a href="/menuItem/{{_id}}" class="button  blue tiny floated ui editMenu right">Edit</a>
+                    <a href="/item/{{_id}}" class="button result orange tiny floated ui editRecipe right">Recipe</a>
+                    <a href="#" class="button red tiny floated ui deleteRecipe right">Delete</a>
+                    </p>
+                    <p>
+                        <code>_id: {{_id}}</code>
+                    </p>
+                </div>
+
+            {{/each}}
+        {{else}}
+            <div style="padding:100px;margin-top:100px;" class="ui loading segment">
+                <p></p>
+                <p></p>
+            </div>
+        {{/if}}
+    </div>
+
+</template>

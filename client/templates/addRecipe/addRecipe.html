@@ -1,0 +1,134 @@
+<template name="addRecipe">
+    <div class="ui breadcrumb">
+        <a class="section" href="/recipes">Recipes</a>
+        <div class="divider"> / </div>
+        <div class="active section">{{#if thisRecipe}}Edit {{else}}Add New{{/if}}</div>
+    </div>
+
+    <div class="segment {{#if savingRecipe}}loading{{/if}} ui">
+        <form  class="ui form recipeForm">
+
+            <!--TITLE FIELD    -->
+            <div class="field">
+                <label>Title</label>
+                <input type="text" value="{{thisRecipe.title}}" name="title" placeholder="ex. Fish Tacos">
+            </div>
+
+            <!--TYPE FIELD    -->
+            <div class="field">
+                <label>Type</label>
+                <select name="type" value="{{thisRecipe.type}}" id="typer" class="search ui dropdown">
+                    <option value="{{thisRecipe.type}}">{{thisRecipe.type}}</option>
+                    <option>entree</option>
+                    <option>drink</option>
+                    <option>smoothie</option>
+                    <option>bowl</option>
+                    <option>side</option>
+                    <option>combo-meals</option>
+                </select>
+            </div>
+
+            <!--COGS FIELD-->
+            <div class="field">
+                <label>Cost of Goods</label>
+                <input value="{{thisRecipe.cogs}}" type="text" name="cogs" placeholder="ex. 2.11">
+            </div>
+
+            <!--DESCRIP FIELD-->
+
+            <div class="field">
+                <label>Marketing Description</label>
+                <textarea value="{{thisRecipe.description}}" name="description" id="desc" cols="10" rows="5"></textarea>
+            </div>
+
+            <!--INGREDIENTS FIELD-->
+
+            <div class="field">
+                <label>Featured Image</label>
+                <input id="file" type="file"/>
+                <div class="ui segment">
+                    {{#if image}}
+                        <img style="width:300px" src="{{image}}" alt=""/>
+                        {{else}}
+                        <img src="http://placehold.it/300x300" alt=""/>
+                    {{/if}}
+                </div>
+            </div>
+
+            <!--INGREDIENTS FIELD-->
+
+            <div class="field">
+                <label>Ingredients</label>
+                <textarea name="ingredients" value="{{thisRecipe.ingredients}}" id="ing" cols="10" rows="5"></textarea>
+            </div>
+
+
+            <h4>Nutritional Info</h4>
+            <!-- NUTRITIONAL INFO FIELDS-->
+            <div class="field">
+                <label>Calories</label>
+                <input type="text" value="{{thisRecipe.calories}}" name="calories" placeholder="">
+            </div>
+
+            <div class="field">
+                <label>Carbs</label>
+                <input type="text" value="{{thisRecipe.carbs}}" name="carbs" placeholder="">
+            </div>
+
+            <div class="field">
+                <label>Protein</label>
+                <input type="text" value="{{thisRecipe.protein}}" name="protein" placeholder="">
+            </div>
+
+            <div class="field">
+                <label>Fiber</label>
+                <input type="text" value="{{thisRecipe.fiber}}" name="fiber" placeholder="">
+            </div>
+
+            <div class="field">
+                <label>Fat</label>
+                <input type="text" value="{{thisRecipe.fat}}" name="fat" placeholder="">
+            </div>
+
+
+            <!--<div class="field">-->
+                <!--<label>Buzzwords</label>-->
+                <!--<div class="column">-->
+                    <!--<div class="ui test slider checkbox">-->
+                        <!--<input value="gluten" type="checkbox">-->
+                        <!--<label>gluten-free</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="column">-->
+                    <!--<div class="ui test slider checkbox">-->
+                        <!--<input value="vegetarian" type="checkbox">-->
+                        <!--<label>vegetarian</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="column">-->
+                    <!--<div class="ui test slider checkbox">-->
+                        <!--<input value="vegan" type="checkbox">-->
+                        <!--<label>vegan</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="column">-->
+                    <!--<div class="ui test slider checkbox">-->
+                        <!--<input value="nut" type="checkbox">-->
+                        <!--<label>nut-free</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="column">-->
+                    <!--<div class="ui test slider checkbox">-->
+                        <!--<input value="dairy" type="checkbox">-->
+                        <!--<label>dairy-free</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            <!--</div>-->
+
+            <div class="ui segment field">
+            <button type="submit" class="ui button blue big">Save</button>
+            </div>
+        </form>
+    </div>
+</template>

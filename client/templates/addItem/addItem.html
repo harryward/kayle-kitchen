@@ -1,0 +1,77 @@
+<template name="addItem">
+    <div class="ui breadcrumb">
+        <a class="section" href="/">Menu Items</a>
+        <div class="divider"> / </div>
+        <div class="active section">Add New</div>
+    </div>
+
+    <div class="segment {{#if saving}}loading{{/if}} ui">
+        <form class="addItem ui form">
+            <div class="ui segment">
+                <p>Date:</p>
+                <div class="ui left corner labeled input">
+                    <input type="date" name="date" class="obj datepicker" placeholder="Date...">
+                    <div class="ui left corner label">
+                        <i class="calendar icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ui segment">
+                <p for="">Daypart:</p>
+                <div class="ui left corner labeled input">
+
+                    <select name="daypart" class="ui daypart  dropdown">
+                        <option value="breakfast">breakfast</option>
+                        <option value="lunch">lunch</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="ui segment">
+            <div style="max-width:100%" class="ui  dropdown labeled icon button">
+                <i class="filter icon"></i>
+                <span class="text">Select Recipe</span>
+                <div class="menu">
+                    <div class="ui icon search input">
+                        <i class="search icon"></i>
+                        <input type="text" placeholder="Search Recipe Titles...">
+                    </div>
+                    <div class="divider"></div>
+                    <div class="header">
+                        <i class="tags icon"></i>
+                        Recipes
+                    </div>
+                    <div class="scrolling menu">
+                        {{#each recipe}}
+                            <div class="item recipeItem">
+                            <!--<div class="ui blue empty circular label"></div>-->
+                            {{title}}
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="segment ui">
+            <div class="ui two fields">
+            <div class="ui field">
+                <label>Price</label>
+                <div class="ui  input">
+                    <input type="text" name="price" class=" obj" placeholder="9.00">
+                </div>
+            </div>
+            <div class="ui field">
+                <label>Quantity</label>
+                <div class="ui  input">
+                    <input type="text" name="originalQty" class="quantity obj" placeholder="30">
+                </div>
+            </div>
+            </div>
+            </div>
+            <p>
+                <button class="ui button huge green icon"><i class="icon save"></i> Publish</button>
+            </p>
+        </form>
+    </div>
+</template>
